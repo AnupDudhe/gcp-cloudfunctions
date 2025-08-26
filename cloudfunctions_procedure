@@ -1,0 +1,19 @@
+gcloud functions deploy create_gce_snapshot \  #use same command to redeploy as well.
+  --gen2 \
+  --runtime python311 \
+  --entry-point create_gce_snapshot \
+  --trigger-http \
+  --allow-unauthenticated \
+  --region us-central1
+
+
+gcloud services enable \
+  cloudfunctions.googleapis.com \
+  run.googleapis.com \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  compute.googleapis.com
+     #to enable required apis 
+
+gcloud functions logs read create_gce_snapshot --region=us-central1 --gen2  #For logs 
+
